@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | GitHub user search app</title>
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  devfinder
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
 
-  Light
-  Dark
+    <title>Frontend Mentor | GitHub user search app</title>
+    <link rel="stylesheet" href="./syle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2 class="logo">devfinder</h2>
+        <div class="bright-dark-box">
+          <span class="bright-dark-text">DARK</span>
+          <img src="./assets/icon-moon.svg" alt="" class="bright-dark-img" />
+        </div>
+      </div>
 
-  Search GitHub username...
-  Search
-
-  Joined
-
-  Repos
-  Followers
-  Following
-
-</body>
+      <div class="user-search-bar">
+        <div class="user-search-box">
+          <img
+            src="./assets/icon-search.svg"
+            alt=""
+            class="user-search-box__img"
+          />
+          <input
+            placeholder="Search GitHub username…"
+            type="text"
+            class="user-search-bar__input"
+          />
+        </div>
+        <button class="search-button">Search</button>
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
 </html>
