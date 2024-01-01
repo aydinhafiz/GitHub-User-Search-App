@@ -36,6 +36,7 @@ body {
 .user-search-bar {
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
 
   gap: 280px;
   border-radius: 15px;
@@ -71,4 +72,43 @@ body {
   color: #fff;
   font-size: 16px;
   font-weight: 700;
+}
+
+.left-side__img {
+  border-radius: 50%;
+}
+
+.user-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info__left-side {
+  display: flex;
+  gap: 37px;
+}
+
+.left-side__user-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  color: #2b3442;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.nickname {
+  color: #0079ff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.user-bio {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25px;
 }
