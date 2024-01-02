@@ -1,11 +1,11 @@
 * {
-  padding: 0;
-  margin: 0 auto;
   box-sizing: border-box;
   font-family: "Space Mono", monospace;
 }
 
 body {
+  padding: 0;
+  margin: 0 auto;
   max-width: 730px;
   background: #f6f8ff;
 }
@@ -72,16 +72,26 @@ body {
   color: #fff;
   font-size: 16px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .left-side__img {
   border-radius: 50%;
+  width: 117px;
+  height: 117px;
+}
+
+.content {
+  border-radius: 15px;
+  background: #fefefe;
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
+  padding: 44px 48px 48px 48px;
 }
 
 .user-info-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 32px;
 }
 
 .user-info__left-side {
@@ -98,12 +108,14 @@ body {
   color: #2b3442;
   font-size: 26px;
   font-weight: 700;
+  margin-bottom: 2px;
 }
 
 .nickname {
   color: #0079ff;
   font-size: 16px;
   font-weight: 400;
+  margin-bottom: 20px;
 }
 
 .user-bio {
@@ -111,4 +123,118 @@ body {
   font-size: 15px;
   font-weight: 400;
   line-height: 25px;
+}
+
+.when-user-joined {
+  color: #697c9a;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.user-info-middle {
+  max-width: 480px;
+  margin-left: 150px;
+}
+
+.user-follow-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 83px 17px 32px;
+  margin-bottom: 37px;
+
+  border-radius: 10px;
+  background: #f6f8ff;
+}
+
+.user-follow-infos__repos {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-follow-infos__followers {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-follow-infos__following {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-follow-infos__text {
+  color: #4b6a9b;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.user-follow-infos__number-repos {
+  color: #2b3442;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.user-follow-infos__number-followers {
+  color: #2b3442;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.user-follow-infos__number-following {
+  color: #2b3442;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.user-contact-info-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-contact-location {
+  margin-right: 80px;
+  margin-bottom: 19px;
+}
+
+.user-contact-website {
+  margin-right: 20px;
+}
+
+.user-contact-text-location {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.user-contact-text-twitter {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.user-contact-text-website {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+
+  text-decoration: none;
+}
+
+.user-contact-text-company {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.active {
+  color: #4b6a9b;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.5;
+}
+
+.active-img {
+  opacity: 0.5;
 }
