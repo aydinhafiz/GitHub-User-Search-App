@@ -3,48 +3,74 @@
 const searchBtn = document.querySelector(".search-button");
 const searchInput = document.querySelector(".user-search-bar__input");
 
+const month = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-searchBtn.addEventListener("click", function () {
+const d = new Date();
 
-  console.log(searchInput.value);
+let name = month[d.getMonth()];
+
+console.log(name);
+
+const getPersonData = function () {
   fetch(`https://api.github.com/users/${searchInput.value}`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       console.log(data);
-  
+
       function userPersonImg() {
         if (data.avatar_url) {
           const personImg = data.avatar_url;
-          const imgTag = document.querySelector(".left-side__img");
+          let imgTag = document.querySelector(".left-side__img");
           imgTag.src = personImg;
+        } else {
+          imgTag.src = "./assets/icon-search.svg";
+          document.querySelector(".left-side__img").src = imgTag;
         }
       }
-  
+
       function userJoinedDate() {
         if (data.created_at) {
           const joined = data.created_at;
-          document.querySelector(
-            ".when-user-joined"
-          ).textContent = `Joined ${joined}`;
+
+          const splittedJoined = joined.split("-");
+
+          console.log(splittedJoined);
+
+          document.querySelector(".when-user-joined").textContent = `Joined ${
+            splittedJoined[0] + " " + splittedJoined[1]
+          }`;
         }
       }
-  
+
       function userUserName() {
         if (data.name) {
           const userName = data.name;
           document.querySelector(".user-name").textContent = userName;
         }
       }
-  
+
       function userNickName() {
         if (data.login) {
           const nickName = data.login;
           document.querySelector(".nickname").textContent = `@${nickName}`;
         }
       }
-  
+
       function userBio() {
         if (data.bio) {
           const personBio = data.bio;
@@ -55,16 +81,17 @@ searchBtn.addEventListener("click", function () {
           ).textContent = `This profile has no bio`;
         }
       }
-  
+
       function userRepos() {
         if (data.public_repos) {
           const userRepos = data.public_repos;
-  
-          document.querySelector(".user-follow-infos__number-repos").textContent =
-            userRepos;
+
+          document.querySelector(
+            ".user-follow-infos__number-repos"
+          ).textContent = userRepos;
         }
       }
-  
+
       function userFollowers() {
         if (data.followers) {
           const userFollowers = data.followers;
@@ -77,7 +104,7 @@ searchBtn.addEventListener("click", function () {
           ).textContent = 0;
         }
       }
-  
+
       function userFollowing() {
         if (data.following) {
           const userFollowing = data.following;
@@ -90,7 +117,7 @@ searchBtn.addEventListener("click", function () {
           ).textContent = 0;
         }
       }
-  
+
       function userLocation() {
         if (data.location) {
           const userLocation = data.location;
@@ -105,82 +132,90 @@ searchBtn.addEventListener("click", function () {
           document
             .querySelector(".user-contact-text-location")
             .classList.add("active");
-  
+
           document
             .querySelector(".user-contact__img-location")
             .classList.add("active-img");
         }
       }
-  
+
       function userTwitter() {
         if (data.twitter_username) {
           const userTwitter = data.twitter_username;
           document.querySelector(".user-contact-text-twitter").textContent =
             userTwitter;
-  
+
           document
             .querySelector(".user-contact__img-twitter")
             .classList.remove("active-img");
+
+          document
+            .querySelector(".user-contact-text-twitter")
+            .classList.remove("active");
         } else {
           document.querySelector(".user-contact-text-twitter").textContent =
             "Not Available";
-  
+
           document
             .querySelector(".user-contact-text-twitter")
             .classList.add("active");
-  
+
           document
             .querySelector(".user-contact__img-twitter")
             .classList.add("active-img");
         }
       }
-  
+
       function userWebsite() {
         if (data.html_url) {
           const userWebsite = data.html_url;
           document.querySelector(".user-contact-text-website").textContent =
             userWebsite;
-  
+
           document
             .querySelector(".user-contact__img-website")
             .classList.remove("active-img");
         } else {
           document.querySelector(".user-contact-text-website").textContent =
             "Not Available";
-  
+
           document
             .querySelector(".user-contact-text-website")
             .classList.add("active");
-  
+
           document
             .querySelector(".user-contact__img-website")
             .classList.add("active-img");
         }
       }
-  
+
       function usercompany() {
         if (data.company) {
           const userCompany = data.company;
           document.querySelector(".user-contact-text-company").textContent =
             userCompany;
-  
+
           document
             .querySelector(".user-contact__img-company")
             .classList.remove("active-img");
+
+          document
+            .querySelector(".user-contact-text-company")
+            .classList.remove("active");
         } else {
           document.querySelector(".user-contact-text-company").textContent =
             "Not Available";
-  
+
           document
             .querySelector(".user-contact-text-company")
             .classList.add("active");
-  
+
           document
             .querySelector(".user-contact__img-company")
             .classList.add("active-img");
         }
       }
-  
+
       userPersonImg();
       userJoinedDate();
       userUserName();
@@ -197,5 +232,14 @@ searchBtn.addEventListener("click", function () {
     .catch((error) => {
       console.log(error);
     });
-});
+};
 
+searchBtn.addEventListener("click", getPersonData);
+
+document.addEventListener("keydown", function (e) {
+  console.log(e.key);
+
+  if (e.key === "Enter") {
+    getPersonData();
+  }
+});
