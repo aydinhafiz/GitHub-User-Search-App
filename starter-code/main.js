@@ -48,11 +48,16 @@ const getPersonData = function () {
           const joined = data.created_at;
 
           const splittedJoined = joined.split("-");
-
-          console.log(splittedJoined);
+          const replacedMonth = splittedJoined[1].replace("0", ""); 
+          Number(replacedMonth);
+          const joinDay = splittedJoined[2].split("T");
 
           document.querySelector(".when-user-joined").textContent = `Joined ${
-            splittedJoined[0] + " " + splittedJoined[1]
+            joinDay[0] +
+            " " +
+            month[replacedMonth - 1] +
+            " " +
+            splittedJoined[0]
           }`;
         }
       }
