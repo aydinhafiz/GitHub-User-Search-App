@@ -18,12 +18,6 @@ const month = [
   "December",
 ];
 
-const d = new Date();
-
-let name = month[d.getMonth()];
-
-console.log(name);
-
 const getPersonData = function () {
   fetch(`https://api.github.com/users/${searchInput.value}`)
     .then((res) => {
@@ -32,14 +26,32 @@ const getPersonData = function () {
     .then((data) => {
       console.log(data);
 
+      if (data.id) {
+        document
+          .querySelector(".user-search-button span")
+          .classList.add("no-result-hidden");
+
+        document
+          .querySelector(".user-search-button span")
+          .classList.remove("no-result-active");
+      } else {
+        document
+          .querySelector(".user-search-button span")
+          .classList.add("no-result-active");
+
+        document
+          .querySelector(".user-search-button span")
+          .classList.remove("no-result-hidden");
+      }
+
       function userPersonImg() {
         if (data.avatar_url) {
           const personImg = data.avatar_url;
           let imgTag = document.querySelector(".left-side__img");
           imgTag.src = personImg;
         } else {
-          imgTag.src = "./assets/icon-search.svg";
-          document.querySelector(".left-side__img").src = imgTag;
+          const defaultImg = "./assets/default-user.png";
+          document.querySelector(".left-side__img").src = defaultImg;
         }
       }
 
@@ -48,7 +60,7 @@ const getPersonData = function () {
           const joined = data.created_at;
 
           const splittedJoined = joined.split("-");
-          const replacedMonth = splittedJoined[1].replace("0", ""); 
+          const replacedMonth = splittedJoined[1].replace("0", "");
           Number(replacedMonth);
           const joinDay = splittedJoined[2].split("T");
 
@@ -59,6 +71,9 @@ const getPersonData = function () {
             " " +
             splittedJoined[0]
           }`;
+        } else {
+          document.querySelector(".when-user-joined").textContent =
+            "Joined 25 Jan 2011";
         }
       }
 
@@ -66,6 +81,8 @@ const getPersonData = function () {
         if (data.name) {
           const userName = data.name;
           document.querySelector(".user-name").textContent = userName;
+        } else {
+          document.querySelector(".user-name").textContent = "The Octocat";
         }
       }
 
@@ -73,6 +90,8 @@ const getPersonData = function () {
         if (data.login) {
           const nickName = data.login;
           document.querySelector(".nickname").textContent = `@${nickName}`;
+        } else {
+          document.querySelector(".nickname").textContent = `@octocat`;
         }
       }
 
@@ -94,6 +113,10 @@ const getPersonData = function () {
           document.querySelector(
             ".user-follow-infos__number-repos"
           ).textContent = userRepos;
+        } else {
+          document.querySelector(
+            ".user-follow-infos__number-repos"
+          ).textContent = 0;
         }
       }
 
@@ -131,6 +154,10 @@ const getPersonData = function () {
           document
             .querySelector(".user-contact-text-location")
             .classList.remove("active");
+
+          document
+            .querySelector(".user-contact__img-location")
+            .classList.remove("active-img");
         } else {
           document.querySelector(".user-contact-text-location").textContent =
             "Not Available";
