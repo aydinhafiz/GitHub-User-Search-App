@@ -2,7 +2,7 @@
 
 const searchBtn = document.querySelector(".search-button");
 const searchInput = document.querySelector(".user-search-bar__input");
-
+const changeDarkMode = document.querySelector(".bright-dark-box");
 const month = [
   "January",
   "February",
@@ -199,14 +199,22 @@ const getPersonData = function () {
       }
 
       function userWebsite() {
-        if (data.html_url) {
-          const userWebsite = data.html_url;
+        if (data.blog) {
+          const userWebsite = data.blog;
           document.querySelector(".user-contact-text-website").textContent =
-            userWebsite;
+            " User Web Site";
+
+          document.querySelector(
+            ".user-contact-text-website"
+          ).href = `${userWebsite}`;
 
           document
             .querySelector(".user-contact__img-website")
             .classList.remove("active-img");
+
+          document
+            .querySelector(".user-contact-text-website")
+            .classList.remove("active");
         } else {
           document.querySelector(".user-contact-text-website").textContent =
             "Not Available";
